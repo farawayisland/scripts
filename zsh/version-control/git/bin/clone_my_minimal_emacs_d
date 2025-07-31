@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+# ~/Projects/Programming/scripts/zsh/version-control/git/bin/clone_my_minimal_emacs_d
+## Dependencies:
+## Git | https://formulae.brew.sh/formula/git
+source "$ZSH_FUNCTIONS_DIR/clear"
+source "$ZSH_FUNCTIONS_DIR/pause_and_print_separator"
+source "$ZSH_FUNCTIONS_DIR/print_separator"
+
+clear
+print_separator
+git clone 'https://github.com/farawayisland/my-minimal.emacs.d.git' "${XDG_CONFIG_HOME:-$HOME/.config}/emacs"
+printf '\n%s\n\n' "Successfully cloned https://github.com/farawayisland/my-minimal.emacs.d to ${XDG_CONFIG_HOME:-$HOME/.config}/emacs."
+pause_and_print_separator "Press Return to exit. "

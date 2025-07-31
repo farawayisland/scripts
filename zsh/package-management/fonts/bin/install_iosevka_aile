@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+# ~/Projects/Programming/scripts/zsh/package-management/fonts/bin/install_iosevka_aile
+## Dependencies:
+## GitHub CLI | https://formulae.brew.sh/formula/gh
+## 7-Zip | https://formulae.brew.sh/formula/sevenzip
+## Wget | https://formulae.brew.sh/formula/wget
+source "$ZSH_FUNCTIONS_DIR/clear"
+source "$ZSH_FUNCTIONS_DIR/mkcd"
+source "$ZSH_FUNCTIONS_DIR/pause_and_print_separator"
+source "$ZSH_FUNCTIONS_DIR/print_separator"
+
+clear
+print_separator
+cd "$HOME/Downloads"
+gh release download -p 'PkgTTC-IosevkaAile-*.zip' -R 'be5invis/Iosevka'
+7zz e 'PkgTTC-IosevkaAile-*.zip' -o'IosevkaAile'
+mv 'IosevkaAile/IosevkaAile-'{Bold,Medium,SemiBold}'.ttc' "$HOME/Library/Fonts"
+trash 'IosevkaAile' 'PkgTTC-IosevkaAile-'*'.zip'
+mkcd "$HOME/Appearance/Fonts/Iosevka Aile"
+wget -N -q --show-progress 'https://raw.githubusercontent.com/be5invis/Iosevka/refs/heads/main/LICENSE.md'
+printf '\n'
+pause_and_print_separator "Press Return to exit. "

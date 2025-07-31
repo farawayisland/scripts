@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+# ~/Projects/Programming/scripts/zsh/package-management/homebrew/bin/create_brewfile
+## Dependencies:
+## Homebrew | https://brew.sh/
+## bat | https://formulae.brew.sh/formula/bat
+source "$ZSH_FUNCTIONS_DIR/clear"
+source "$ZSH_FUNCTIONS_DIR/pause_and_print_separator"
+source "$ZSH_FUNCTIONS_DIR/print_separator"
+
+clear
+print_separator
+cd "$ZSH_SCRIPTS_DIR/package-management/homebrew/brewfiles"
+brew bundle dump --force
+cp 'Brewfile' "$CONFIGURATIONS/homebrew/config/brewfiles/Brewfile"
+bat --paging=always 'Brewfile'
+bat -pp 'Brewfile'
+printf '\n'
+pause_and_print_separator "Press Return to exit. "
+

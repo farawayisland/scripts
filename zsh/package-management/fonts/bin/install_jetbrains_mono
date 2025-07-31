@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+# ~/Projects/Programming/scripts/zsh/package-management/fonts/bin/install_jetbrains_mono
+## Dependencies:
+## GitHub CLI | https://formulae.brew.sh/formula/gh
+## 7-Zip | https://formulae.brew.sh/formula/sevenzip
+source "$ZSH_FUNCTIONS_DIR/clear"
+source "$ZSH_FUNCTIONS_DIR/mkcd"
+source "$ZSH_FUNCTIONS_DIR/pause_and_print_separator"
+source "$ZSH_FUNCTIONS_DIR/print_separator"
+
+clear
+print_separator
+cd "$HOME/Downloads"
+gh release download -p 'JetBrainsMono-*.zip' -R 'JetBrains/JetBrainsMono'
+7zz e 'JetBrainsMono-*.zip' -o'JetBrainsMono'
+mv 'JetBrainsMono/JetBrainsMono-'{Bold,BoldItalic,Medium,MediumItalic,SemiBold,SemiBoldItalic}'.ttf' "$HOME/Library/Fonts"
+mkcd "$HOME/Appearance/Fonts/JetBrains Mono"
+mv "$HOME/Downloads/JetBrainsMono/OFL.txt" 'LICENSE.txt'
+trash "$HOME/Downloads/JetBrainsMono" "$HOME/Downloads/JetBrainsMono-"*'.zip'
+printf '\n'
+pause_and_print_separator "Press Return to exit. "

@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+# ~/Projects/Programming/scripts/zsh/package-management/homebrew/bin/install_emacs_plus
+## Dependencies:
+## Homebrew | https://brew.sh/
+source "$ZSH_FUNCTIONS_DIR/clear"
+source "$ZSH_FUNCTIONS_DIR/pause_and_print_separator"
+source "$ZSH_FUNCTIONS_DIR/print_separator"
+
+clear
+print_separator
+brew tap d12frosted/emacs-plus
+brew install emacs-plus --with-debug --with-imagemagick --with-savchenkovaleriy-big-sur-icon --with-xwidgets
+printf '\n'
+pause_and_print_separator "Press Return to exit. "

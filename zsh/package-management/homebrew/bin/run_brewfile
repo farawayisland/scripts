@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+# ~/Projects/Programming/scripts/zsh/package-management/homebrew/bin/run_brewfile
+## Dependencies:
+## Homebrew | https://brew.sh/
+source "$ZSH_FUNCTIONS_DIR/clear"
+source "$ZSH_FUNCTIONS_DIR/pause_and_print_separator"
+source "$ZSH_FUNCTIONS_DIR/print_separator"
+
+clear
+print_separator
+cd "$ZSH_SCRIPTS_DIR/package-management/homebrew/brewfiles"
+brew bundle
+printf '\n'
+pause_and_print_separator "Press Return to exit. "
+

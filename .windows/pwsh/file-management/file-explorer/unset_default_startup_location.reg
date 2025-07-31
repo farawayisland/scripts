@@ -1,0 +1,4 @@
+; ~/Projects/Programming/scripts/.windows/pwsh/file-management/file-explorer/unset_default_location.reg
+Windows Registry Editor Version 5.00
+
+[-HKEY_CURRENT_USER\Software\Classes\CLSID\{52205fd8-5dfb-447d-801a-d0b52f2e83e1}]

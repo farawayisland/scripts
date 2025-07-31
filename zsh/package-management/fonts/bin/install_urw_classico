@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+# ~/Projects/Programming/scripts/zsh/package-management/fonts/bin/install_urw_classico
+## Dependencies:
+## Wget | https://formulae.brew.sh/formula/wget
+source "$ZSH_FUNCTIONS_DIR/clear"
+source "$ZSH_FUNCTIONS_DIR/mkcd"
+source "$ZSH_FUNCTIONS_DIR/pause_and_print_separator"
+source "$ZSH_FUNCTIONS_DIR/print_separator"
+
+clear
+print_separator
+mkcd "$HOME/Library/texmf/tex/assets/fonts/sans-serif/urw-classico"
+wget -N -q --show-progress 'https://mirrors.ctan.org/fonts/urw/classico/opentype/URWClassico-'{Bold,BoldItalic,Regular,Italic}'.otf'
+cp *'.otf' "$HOME/Library/Fonts"
+mkcd "$HOME/Appearance/Fonts/URW Classico"
+wget -O 'README.txt' -q --show-progress 'https://mirrors.ctan.org/fonts/urw/classico/README'
+printf '\n'
+pause_and_print_separator "Press Return to exit. "

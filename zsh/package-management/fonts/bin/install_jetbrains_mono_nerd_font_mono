@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+# ~/Projects/Programming/scripts/zsh/package-management/fonts/bin/install_jetbrains_mono_nerd_font_mono
+## Dependencies:
+## 7-Zip | https://formulae.brew.sh/formula/sevenzip
+## Wget | https://formulae.brew.sh/formula/wget
+source "$ZSH_FUNCTIONS_DIR/clear"
+source "$ZSH_FUNCTIONS_DIR/mkcd"
+source "$ZSH_FUNCTIONS_DIR/pause_and_print_separator"
+source "$ZSH_FUNCTIONS_DIR/print_separator"
+
+clear
+print_separator
+cd "$HOME/Downloads"
+wget -N -q --show-progress 'https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip'
+7zz e 'JetBrainsMono.zip' -o'JetBrainsMono'
+mv 'JetBrainsMono/JetBrainsMonoNerdFontMono-'{Bold,BoldItalic,Medium,MediumItalic,SemiBold,SemiBoldItalic}'.ttf' "$HOME/Library/Fonts"
+mkcd "$HOME/Appearance/Fonts/JetBrains Mono Nerd Font"
+mv "$HOME/Downloads/JetBrainsMono/OFL.txt" 'LICENSE.txt'
+mv "$HOME/Downloads/JetBrainsMono/README.md" .
+trash "$HOME/Downloads/JetBrainsMono" "$HOME/Downloads/JetBrainsMono.zip"
+printf '\n'
+pause_and_print_separator "Press Return to exit. "

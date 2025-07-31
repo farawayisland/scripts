@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+# ~/Projects/Programming/scripts/zsh/package-management/homebrew/bin/list_homebrew_packages
+## Dependencies:
+## Homebrew | https://brew.sh/
+## sed | https://formulae.brew.sh/formula/gnu-sed
+source "$ZSH_FUNCTIONS_DIR/clear"
+source "$ZSH_FUNCTIONS_DIR/pause_and_print_separator"
+source "$ZSH_FUNCTIONS_DIR/print_separator"
+
+clear
+print_separator
+printf '%s\n' "[HOMEBREW VERSION: $(brew -v | sed -En 's/Homebrew //p')]"
+print_separator
+printf '%s\n\n' "[INSTALLED-ON-REQUEST FORMULAE]"
+brew desc --formula $(brew list --installed-on-request)
+printf '\n'
+brew list --versions $(brew list --installed-on-request)
+printf '\n'
+print_separator
+## Uncomment the following line if the script fails to show versions of installed casks due to existing .DS_Store files in the Caskroom folder
+## cd "$HOMEBREW_PREFIX/Caskroom" && find . -name '.DS_Store' -print -type f -delete
+printf '%s\n\n' "[INSTALLED-ON-REQUEST CASKS]"
+brew desc $(brew list --cask)
+printf '\n'
+brew list --versions --cask
+printf '\n'
+print_separator
+printf '%s\n\n' "[MAC APP STORE APPLICATIONS]"
+mas list
+printf '\n'
+pause_and_print_separator "Press Return to exit. "
