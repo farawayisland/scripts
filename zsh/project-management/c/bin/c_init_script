@@ -1,0 +1,34 @@
+#!/usr/bin/env zsh
+# ~/Projects/Programming/scripts/zsh/project-management/c/bin/c_init_script
+
+# Dependencies
+. "$ZSH_FUNCTIONS_DIR/clear"
+. "$ZSH_FUNCTIONS_DIR/pause_and_print_separator"
+. "$ZSH_FUNCTIONS_DIR/print_green"
+. "$ZSH_FUNCTIONS_DIR/print_separator"
+. "$ZSH_FUNCTIONS_DIR/reset_color"
+
+# Initialize C project directory
+if [ -z "$1" ]; then
+  dir_root="$PWD"
+else
+  dir_root="$(realpath $1)"
+fi
+[ -d "$dir_root" ] || mkdir -p "$dir_root"
+
+dir_build="$dir_root/build"
+dir_src="$dir_root/src"
+dir_bin="$dir_build/bin"
+[ -d "$dir_build" ] || mkdir -p "$dir_build"
+[ -d "$dir_src" ] || mkdir -p "$dir_src"
+[ -d "$dir_bin" ] || mkdir -p "$dir_bin"
+
+clear
+print_green -n
+print_separator
+printf '%s\n' "Initializing C project directory..."
+cp "$C_LIBRARIES_FLIBS_BUILD_DIR/build" "$dir_build/build"
+cp "$C_LIBRARIES_FLIBS_BUILD_DIR/options" "$dir_build/options"
+printf '\n'
+pause_and_print_separator "Press Return to exit. "
+reset_color
